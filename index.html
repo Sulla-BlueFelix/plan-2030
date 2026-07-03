@@ -1,0 +1,550 @@
+<title>DeepTech作戦計画書 2026–2030</title>
+<style>
+:root{
+  --ground:#F6F8F7; --surface:#FFFFFF; --ink:#1B2420; --muted:#5B6B63; --line:#DCE4DF;
+  --accent:#0E7A5F; --accent-soft:#E3F0EB; --warn:#A8752B; --warn-soft:#F5EBDB;
+  --crit:#A8402F; --crit-soft:#F6E4E0; --rot:#3E6B8F; --rot-soft:#E4ECF3;
+  --dim:#8A968F;
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --ground:#0F1614; --surface:#161F1C; --ink:#E4ECE7; --muted:#9AABA2; --line:#273230;
+    --accent:#41BD95; --accent-soft:#173129; --warn:#D2A05C; --warn-soft:#31281A;
+    --crit:#DA7A64; --crit-soft:#33201C; --rot:#82A9C9; --rot-soft:#1C2833;
+    --dim:#6C7B74;
+  }
+}
+:root[data-theme="dark"]{
+  --ground:#0F1614; --surface:#161F1C; --ink:#E4ECE7; --muted:#9AABA2; --line:#273230;
+  --accent:#41BD95; --accent-soft:#173129; --warn:#D2A05C; --warn-soft:#31281A;
+  --crit:#DA7A64; --crit-soft:#33201C; --rot:#82A9C9; --rot-soft:#1C2833;
+  --dim:#6C7B74;
+}
+:root[data-theme="light"]{
+  --ground:#F6F8F7; --surface:#FFFFFF; --ink:#1B2420; --muted:#5B6B63; --line:#DCE4DF;
+  --accent:#0E7A5F; --accent-soft:#E3F0EB; --warn:#A8752B; --warn-soft:#F5EBDB;
+  --crit:#A8402F; --crit-soft:#F6E4E0; --rot:#3E6B8F; --rot-soft:#E4ECF3;
+  --dim:#8A968F;
+}
+*{box-sizing:border-box}
+body{
+  margin:0; background:var(--ground); color:var(--ink);
+  font-family:"Hiragino Kaku Gothic ProN","Yu Gothic",Meiryo,system-ui,sans-serif;
+  font-size:15px; line-height:1.85; -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:900px; margin:0 auto; padding:48px 20px 96px}
+h1,h2,h3{font-family:"Hiragino Mincho ProN","Yu Mincho","MS PMincho",serif; text-wrap:balance; line-height:1.4}
+h1{font-size:30px; font-weight:600; letter-spacing:.04em; margin:8px 0 4px}
+h2{font-size:22px; font-weight:600; letter-spacing:.05em; margin:0 0 4px}
+h3{font-size:17px; font-weight:600; margin:28px 0 8px}
+p{margin:10px 0}
+.eyebrow{font-size:11px; letter-spacing:.22em; color:var(--accent); font-weight:700}
+.sub{color:var(--muted); font-size:13px}
+.num{font-family:ui-monospace,"SF Mono",Consolas,Menlo,monospace; font-variant-numeric:tabular-nums}
+section{margin-top:56px}
+.secthead{border-bottom:2px solid var(--ink); padding-bottom:10px; margin-bottom:20px}
+.secthead .sub{margin-top:2px}
+/* header */
+header{border-bottom:2px solid var(--ink); padding-bottom:20px}
+.badges{display:flex; flex-wrap:wrap; gap:8px; margin-top:14px}
+.badge{background:var(--surface); border:1px solid var(--line); border-radius:3px; padding:4px 10px; font-size:12.5px; color:var(--muted)}
+.badge b{color:var(--ink); font-weight:600}
+/* layer cards */
+.layers{display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:12px; margin:18px 0 6px}
+.layer{background:var(--surface); border:1px solid var(--line); border-top:3px solid var(--accent); padding:14px 16px}
+.layer.l2{border-top-color:var(--ink)}
+.layer.l3{border-top-color:var(--rot)}
+.layer.l4{border-top-color:var(--warn)}
+.layer .t{font-size:12px; letter-spacing:.14em; color:var(--muted); font-weight:700}
+.layer .v{font-size:22px; font-weight:700; margin:2px 0}
+.layer .d{font-size:12.5px; color:var(--muted); line-height:1.6}
+.formula{background:var(--surface); border:1px solid var(--line); padding:14px 18px; margin:14px 0; font-size:14px}
+/* tables */
+.tblwrap{overflow-x:auto; background:var(--surface); border:1px solid var(--line); margin:14px 0}
+table{border-collapse:collapse; width:100%; font-size:13.5px}
+th{font-size:11.5px; letter-spacing:.08em; color:var(--muted); text-align:left; font-weight:700;
+   border-bottom:1.5px solid var(--ink); padding:9px 12px; white-space:nowrap; background:var(--surface)}
+td{border-bottom:1px solid var(--line); padding:9px 12px; vertical-align:top}
+tr:last-child td{border-bottom:none}
+td.n,th.n{font-family:ui-monospace,"SF Mono",Consolas,Menlo,monospace; font-variant-numeric:tabular-nums; white-space:nowrap}
+/* pills */
+.pill{display:inline-block; font-size:11px; font-weight:700; letter-spacing:.06em; padding:2px 9px; border-radius:999px; white-space:nowrap}
+.pill.buy{background:var(--accent-soft); color:var(--accent)}
+.pill.watch{background:var(--warn-soft); color:var(--warn)}
+.pill.rot{background:var(--rot-soft); color:var(--rot)}
+.pill.kill{background:var(--crit-soft); color:var(--crit)}
+.pill.core{background:var(--accent-soft); color:var(--accent); outline:1px solid var(--accent)}
+/* callouts */
+.rule{background:var(--surface); border:1px solid var(--line); border-left:3px solid var(--accent); padding:12px 16px; margin:14px 0; font-size:14px}
+.rule.warn{border-left-color:var(--warn)}
+.rule.crit{border-left-color:var(--crit)}
+.rule b:first-child{display:block; font-size:12px; letter-spacing:.12em; margin-bottom:4px}
+/* dossiers */
+details{background:var(--surface); border:1px solid var(--line); margin:10px 0}
+summary{cursor:pointer; padding:12px 16px; font-weight:600; font-size:14.5px; list-style:none; display:flex; gap:10px; align-items:baseline; flex-wrap:wrap}
+summary::-webkit-details-marker{display:none}
+summary::before{content:"＋"; color:var(--accent); font-weight:700}
+details[open] summary::before{content:"－"}
+details .body{padding:2px 18px 16px; border-top:1px solid var(--line); font-size:13.5px}
+details .body p{margin:8px 0}
+dt{font-size:11.5px; letter-spacing:.1em; color:var(--muted); font-weight:700; margin-top:12px}
+dd{margin:2px 0 0}
+.kill-line{color:var(--crit); font-weight:600}
+/* toc */
+.toc{background:var(--surface); border:1px solid var(--line); padding:16px 20px; margin-top:24px; font-size:13.5px}
+.toc a{color:var(--ink); text-decoration:none; border-bottom:1px dotted var(--dim)}
+.toc a:hover{color:var(--accent)}
+.toc .part{font-size:11px; letter-spacing:.18em; color:var(--accent); font-weight:700; margin-top:8px}
+.toc ol{margin:4px 0 4px 20px; padding:0}
+.toc li{margin:3px 0}
+/* logic chain */
+.chain{counter-reset:step; margin:14px 0; padding:0; list-style:none}
+.chain li{position:relative; padding:0 0 14px 40px; border-left:1px solid var(--line); margin-left:13px}
+.chain li:last-child{border-left-color:transparent}
+.chain li::before{
+  counter-increment:step; content:counter(step);
+  position:absolute; left:-14px; top:0; width:27px; height:27px; border-radius:50%;
+  background:var(--accent); color:var(--ground); font-size:13px; font-weight:700;
+  display:flex; align-items:center; justify-content:center;
+  font-family:ui-monospace,Consolas,monospace;
+}
+.chain li b{display:block}
+.foot{margin-top:64px; border-top:1px solid var(--line); padding-top:16px; color:var(--muted); font-size:12px}
+a{color:var(--accent)}
+:focus-visible{outline:2px solid var(--accent); outline-offset:2px}
+@media (max-width:560px){ h1{font-size:24px} .wrap{padding-top:32px} }
+</style>
+
+<div class="wrap">
+
+<header>
+  <div class="eyebrow">投資作戦計画書 ｜ しぐまAI × BlueF</div>
+  <h1>DeepTech作戦計画書 2026–2030</h1>
+  <p class="sub">最終改訂 2026-07-04（v3.2）／ 全データ実測日 2026-07-03〜04 ／ USDJPY 161円換算 ／ 楽天証券・NISA前提・S株対応確認済み</p>
+  <div class="badges">
+    <span class="badge">初期資金 <b class="num">65万円</b></span>
+    <span class="badge">積立 <b class="num">月5万円</b>（54ヶ月＝270万）</span>
+    <span class="badge">時間軸 <b>2030年・放置型</b></span>
+    <span class="badge">目標 <b class="num">資産500万円</b></span>
+    <span class="badge">受容ドローダウン <b class="num">-30%以上</b></span>
+  </div>
+  <nav class="toc">
+    <div class="part">第Ⅰ部 ── 行動（結果だけ）</div>
+    <ol>
+      <li><a href="#a1">結論の一枚（4層構造と算数）</a></li>
+      <li><a href="#a2">購入予定の全銘柄（確定枠）</a></li>
+      <li><a href="#a3">押し目待ち・条件付き</a></li>
+      <li><a href="#a4">今週の作業・アラート・監視ルーチン</a></li>
+      <li><a href="#a5">方針転換トリガー（構造を変える8イベント）</a></li>
+    </ol>
+    <div class="part">第Ⅱ部 ── 導出（再現可能な思考過程）</div>
+    <ol>
+      <li><a href="#b0">明示された前提（隠れた仮定の排除）</a></li>
+      <li><a href="#b1">目標の算数──主エンジンは入金力</a></li>
+      <li><a href="#b2">コアの選定──QQQに至る消去法</a></li>
+      <li><a href="#b3">メイン5本の導出──全陣営原則と値段の規律</a></li>
+      <li><a href="#b4">ローテーション枠──バックテストと生存バイアス</a></li>
+      <li><a href="#b5">サテライト──IONQ・SPCX・ソフトバンク</a></li>
+      <li><a href="#b6">却下の記録（同じ議論を繰り返さないために）</a></li>
+      <li><a href="#b7">シナリオツリーとカナリア</a></li>
+      <li><a href="#b8">検証制度──エッジは主張でなく実績</a></li>
+      <li><a href="#b9">データソースと再現手順</a></li>
+    </ol>
+  </nav>
+</header>
+
+<!-- ============ PART I ============ -->
+
+<section id="a1">
+  <div class="secthead">
+    <div class="eyebrow">第Ⅰ部 ─ 1</div>
+    <h2>結論の一枚</h2>
+    <div class="sub">「誰が勝つか」を当てない。戦争の全陣営と、誰が勝っても通る場所を持つ。</div>
+  </div>
+
+  <div class="layers">
+    <div class="layer">
+      <div class="t">① コア</div>
+      <div class="v num">20万＋月3万</div>
+      <div class="d">NASDAQ100投信（NISA・月1楽天カード積立）。ベータ収集装置。売る条件が存在しない。<b>停止禁止＝全体の生命線</b></div>
+    </div>
+    <div class="layer l2">
+      <div class="t">② メイン（買い持ち）</div>
+      <div class="v num">28.7万</div>
+      <div class="d">NVDA 2株・GOOGL・AVGO・TSM・CEG 各1株。GPU×ASIC×製造×電力＝AI戦争の全陣営。全銘柄 予想PER15〜25倍</div>
+    </div>
+    <div class="layer l3">
+      <div class="t">③ ローテーション枠</div>
+      <div class="v num">8万</div>
+      <div class="d">12ヶ月モメンタム上位3銘柄・四半期入替（ユニバース31）。8月第1週開始。<b>4四半期でSMHに負けたら清算</b></div>
+    </div>
+    <div class="layer l4">
+      <div class="t">④ サテライト</div>
+      <div class="v num">約8万</div>
+      <div class="d">IONQ 6株（量子）・SPCX継続（宇宙/xAI）・SB 6万（OpenAI IPOイベント）。全損許容の原石枠</div>
+    </div>
+  </div>
+
+  <div class="formula num">
+    65万（初期） ＋ 5万/月 × 54ヶ月 ＝ 元本335万 ──（年率15%）→ <b>2030年 約500万</b>
+    <span class="sub">　※年率10%でも440万・18%なら550万。成否を決める変数はリターンではなく積立の継続。</span>
+  </div>
+
+  <div class="rule"><b>月5万の内訳</b>
+    月3万＝コアへ自動積立（無条件）。月2万＝プールに貯め、四半期6万を「メイン5本のうち高値からの下落率最大の銘柄」または押し目待ち銘柄へ。
+  </div>
+  <div class="rule warn"><b>暴落時の行動（事前コミット）</b>
+    売らない。積立を増額する（「押したら入金」）。QQQが高値-35%/-50%/-65%でTQQQへ各5万（前回高値回復で全売却・2000年型では全損の宝くじサイズ）。
+  </div>
+</section>
+
+<section id="a2">
+  <div class="secthead">
+    <div class="eyebrow">第Ⅰ部 ─ 2</div>
+    <h2>購入予定の全銘柄（確定枠）</h2>
+    <div class="sub">3分割執行：第1弾＝下げ止まり確認後／第2弾＝CAPEXガイダンス通過後（7末〜8月）／第3弾＝年内大押し、なければ12月末に強制執行。</div>
+  </div>
+  <div class="tblwrap"><table>
+    <tr><th>銘柄</th><th>押さえるテーマ</th><th>区分</th><th class="n">数量</th><th>タイミング・目安価格</th><th>決定的カタリスト（内部／外部）</th></tr>
+    <tr><td><b>QQQ投信</b></td><td>deep tech全体のベータ</td><td><span class="pill core">コア</span></td><td class="n">20万＋月3万</td><td>着金後<b>即日</b>・無条件</td><td>なし（無条件執行が結論。§Ⅱ-2）</td></tr>
+    <tr><td><b>NVDA</b> <span class="num sub">$195</span></td><td>AI計算（GPU）</td><td><span class="pill buy">買い持ち</span></td><td class="n">2株</td><td>1株目＝第1弾（$175-190理想）<br>2株目＝第3弾</td><td>8月末決算（DC売上・Rubin出荷）／ASICサーバー比率・CAPEX</td></tr>
+    <tr><td><b>GOOGL</b> <span class="num sub">$360</span></td><td>モデル×TPU×量子</td><td><span class="pill buy">買い持ち</span></td><td class="n">1株</td><td>第2弾。$320-345なら前倒し可</td><td>7月末決算（Cloud・Gemini・TPU外販）／adtech判決</td></tr>
+    <tr><td><b>AVGO</b> <span class="num sub">$360</span></td><td>カスタムASIC＋AI-NW</td><td><span class="pill buy">買い持ち</span></td><td class="n">1株</td><td>第2弾。$335-360</td><td><b>9月上旬決算</b>（AI売上$16Bガイダンス達成か）／Meta MTIA展開</td></tr>
+    <tr><td><b>TSM</b> <span class="num sub">$434</span></td><td>先端製造の独占</td><td><span class="pill buy">買い持ち</span></td><td class="n">1株</td><td>第2弾。$400-430</td><td>7月中旬決算（2nm・値上げ）／<span class="kill-line">台湾情勢＝唯一の即時売却</span></td></tr>
+    <tr><td><b>CEG</b> <span class="num sub">$239</span></td><td>チップ中立のAI電力</td><td><span class="pill buy">買い持ち</span></td><td class="n">1株</td><td>第1弾。<b>$245回復＋出来高で入る／$235割れ中は触らない</b></td><td>8月上旬決算（EPSガイダンス$11-12維持）・新規PPA／CraneのPJM審査</td></tr>
+    <tr><td><b>IONQ</b> <span class="num sub">$49</span></td><td>量子（純粋プレイ）</td><td><span class="pill watch">条件付き</span></td><td class="n">6株</td><td>第3弾。<b>Q2決算（8月頭）通過後のみ</b></td><td>ガイダンス$260-270M維持・AQ64／超伝導勢（Willow/IBM）の跳躍</td></tr>
+    <tr><td><b>ローテ枠</b></td><td>モメンタムの機械</td><td><span class="pill rot">回転</span></td><td class="n">8万÷3銘柄</td><td>8月第1週シグナルで開始・以後四半期末</td><td>四半期の12ヶ月リターン順位（裁量介入禁止）</td></tr>
+  </table></div>
+  <p class="sub">※CAPEXガイダンス下方修正の場合：第2弾以降のメイン停止・ローテ開始延期・<b>コアだけは予定通り</b>。</p>
+</section>
+
+<section id="a3">
+  <div class="secthead">
+    <div class="eyebrow">第Ⅰ部 ─ 3</div>
+    <h2>押し目待ち・条件付き（プール資金の行き先）</h2>
+    <div class="sub">原資＝月2万×貯蓄→四半期6万。価格が来ない限り永遠に買わない。それも正解として扱う。</div>
+  </div>
+  <div class="tblwrap"><table>
+    <tr><th>銘柄</th><th>テーマ</th><th class="n">数量（買うなら）</th><th>発動条件</th><th>見送り確定条件</th></tr>
+    <tr><td><b>イワキ 6237</b> <span class="num sub">¥3,945</span></td><td>液冷ポンプ（日本周辺）</td><td class="n">S株 約15株≒6万</td><td>¥3,500-3,800到達</td><td>Charon/Dalton売り抜け報告＝需給相場終了</td></tr>
+    <tr><td><b>VRT</b> <span class="num sub">$300</span></td><td>液冷CDU（米本命）</td><td class="n">1株≒4.8万</td><td>$265-295＋下げ止まり（陽線・出来高減）</td><td>受注残の伸び鈍化</td></tr>
+    <tr><td><b>三菱重工 7011</b> <span class="num sub">¥3,788</span></td><td>防衛＋原子力＋ガスT（日本枠）</td><td class="n">S株 15-18株≒6万</td><td>¥3,300-3,600到達</td><td>受注残鈍化・中国規制の実害顕在化</td></tr>
+    <tr><td><b>MU</b> <span class="num sub">$976</span></td><td>メモリ（脱シクリカル試験中）</td><td class="n">1株≒15.7万<br><span class="sub">＝プール2.6ヶ月分</span></td><td><b>8末-9月決算でSCA下のマージン耐性確認</b>→メイン昇格</td><td>マージン急落＝SCA実効性に疑義→回転専用へ戻す</td></tr>
+    <tr><td><b>SB 9984</b> <span class="num sub">¥6,169</span></td><td>OpenAI IPOイベント（13%保有）</td><td class="n">S株≒6万（2分割）</td><td>¥5,700-6,200</td><td class="kill-line">OpenAI調達難・ダウンラウンド報道＝イベント消滅で即撤退</td></tr>
+    <tr><td><b>SPCX</b>（保有1株） <span class="num sub">$153</span></td><td>宇宙覇権2040＋xAI</td><td class="n">最大+2株（上限3株≒7.4万）</td><td><b>マイルストーン後の押し目のみ</b>：①Flight 13成功→$140台で+1株 ②Starlink黒字幅拡大/商用定期化→+1株</td><td>7/31 Flight 13失敗・大幅延期・増資条件悪化→売却判定</td></tr>
+    <tr><td><b>信越化学 4063</b> <span class="num sub">¥6,958</span></td><td>ウェハ・EUVブランクス材料</td><td class="n">S株≒4-6万</td><td>¥6,000-6,500（-20%圏）</td><td>—（質は合格・値段待ち）</td></tr>
+    <tr><td><b>TQQQ</b></td><td>暴落の凸性</td><td class="n">各5万×3段</td><td>QQQ高値-35%／-50%／-65%</td><td>QQQ前回高値回復で全売却（欲の延長禁止）</td></tr>
+  </table></div>
+</section>
+
+<section id="a4">
+  <div class="secthead">
+    <div class="eyebrow">第Ⅰ部 ─ 4</div>
+    <h2>今週の作業・アラート・監視ルーチン</h2>
+  </div>
+  <h3>今週やること（購入側のみ）</h3>
+  <div class="tblwrap"><table>
+    <tr><th class="n">#</th><th>作業</th><th>期日</th></tr>
+    <tr><td class="n">1</td><td>現金化の着金後、QQQ投信 20万スポット購入＋月1楽天カード積立3万を設定</td><td>7/6（月）〜</td></tr>
+    <tr><td class="n">2</td><td>下記アラート11本を証券アプリに設定</td><td>7/6（月）</td></tr>
+    <tr><td class="n">3</td><td>NISA口座・成長枠の残額を確認（<b>唯一の未決事項</b>）</td><td>今週中</td></tr>
+    <tr><td class="n">4</td><td>下げ止まり確認後、第1弾（NVDA 1株＋CEG 1株）</td><td>条件成立次第</td></tr>
+  </table></div>
+  <h3>価格アラート11本</h3>
+  <div class="tblwrap"><table>
+    <tr><th>買い方向</th><th class="n">水準</th><th>意味</th></tr>
+    <tr><td>NVDA</td><td class="n">$190</td><td>ゾーン上限到達</td></tr>
+    <tr><td>CEG</td><td class="n">$245 ／ $235</td><td>回復サイン（買い）／ 割れ（触らない）</td></tr>
+    <tr><td>GOOGL</td><td class="n">$345</td><td>前倒し買い圏</td></tr>
+    <tr><td>AVGO</td><td class="n">$360</td><td>ゾーン内確認</td></tr>
+    <tr><td>TSM</td><td class="n">$430</td><td>ゾーン内確認</td></tr>
+    <tr><td>イワキ</td><td class="n">¥3,800</td><td>押し目ゾーン入口</td></tr>
+    <tr><td>三菱重工</td><td class="n">¥3,600</td><td>押し目ゾーン入口</td></tr>
+    <tr><td>信越化学</td><td class="n">¥6,500</td><td>押し目ゾーン入口</td></tr>
+    <tr><td>SB</td><td class="n">¥6,000</td><td>分割買い水準</td></tr>
+    <tr><td>QQQ</td><td class="n">高値-35%</td><td>暴落プロトコル第1段（高値更新ごとに再計算）</td></tr>
+  </table></div>
+  <h3>監視ルーチン（誰が・いつ・何を）</h3>
+  <div class="tblwrap"><table>
+    <tr><th>頻度</th><th>内容</th></tr>
+    <tr><td>毎日</td><td><b>何もしない。</b>アラートはアプリが鳴らす</td></tr>
+    <tr><td>週1</td><td>しぐまAIにカナリア・チェック依頼（OpenAI資金繰り／CAPEX／ネオクラウド借換）。<b>SB保有中は必須</b></td></tr>
+    <tr><td>月1</td><td>プール残高・押し目台帳の更新</td></tr>
+    <tr><td>四半期</td><td>ローテ枠シグナル算出・入替・台帳（vs SMH）</td></tr>
+    <tr><td>年2回（2月・8月）</td><td>全銘柄の「殺す条件」体系レビュー</td></tr>
+  </table></div>
+  <p class="sub">決算カレンダー（週目安・正確な日付は別AIに委任済み）: 7月中旬TSM → 7月末GOOGL/MSFT/META/VRT → 8月上旬CEG/IONQ/三菱重工/SB → 8月末NVDA → 9月上旬AVGO → 9月末MU。</p>
+</section>
+
+<section id="a5">
+  <div class="secthead">
+    <div class="eyebrow">第Ⅰ部 ─ 5</div>
+    <h2>方針転換トリガー──PFの構造ごと変える8イベント</h2>
+    <div class="sub">個別銘柄の「殺す条件」とは別階層。これらが起きたら「今決めた通りのPF」を守ること自体が誤りになる。</div>
+  </div>
+  <div class="tblwrap"><table>
+    <tr><th>イベント</th><th>対応</th></tr>
+    <tr><td><b>CAPEXガイダンス下方修正</b>（7末-8月HS決算）</td><td>第2弾以降停止・ローテ延期・コアのみ継続（シナリオB発動）</td></tr>
+    <tr><td><b>OpenAI資金繰り断裂</b></td><td>循環ファイナンス系を回転から即除外・<span class="kill-line">SB即撤退</span>・新規停止</td></tr>
+    <tr><td><b>OpenAI IPO実現</b>（$1兆規模）</td><td>カナリア①解消＝シナリオC確率切り下げ。SB利確判定。初値は買わない（QQQ自動組入れに任せる）</td></tr>
+    <tr><td><b>台湾有事の兆候</b></td><td><span class="kill-line">TSM即売却</span>＋半導体系新規全停止＋CEG/QQQ/積立は継続</td></tr>
+    <tr><td><b>技術的競合の出現</b>（新アーキテクチャ・量子方式敗北・TPU直販化 等）</td><td>該当銘柄の殺す条件で個別判定＋年2回の体系レビューで組み替え</td></tr>
+    <tr><td><b>円急伸 140円割れ</b></td><td>スポット購入を日本枠（三菱重工/イワキ/信越）優先に切替。積立は継続（DCAが平均化）</td></tr>
+    <tr><td><b>米10年債 5.5%超</b></td><td>第3弾を温存しゾーン下限まで引きつける</td></tr>
+    <tr><td><b>Anthropic IPO準備報道</b></td><td>GOOGL経由の間接保有を再評価・直接枠の要否を再審</td></tr>
+  </table></div>
+</section>
+
+<!-- ============ PART II ============ -->
+
+<section id="b0">
+  <div class="secthead">
+    <div class="eyebrow">第Ⅱ部 ─ 0</div>
+    <h2>明示された前提──隠れた仮定の排除</h2>
+    <div class="sub">以下がこの計画の全前提。ここに書かれていない仮定に依存する結論は無効。別のAIはまずこの表の真偽を確認せよ。</div>
+  </div>
+  <div class="tblwrap"><table>
+    <tr><th>#</th><th>前提</th><th>出所</th></tr>
+    <tr><td class="n">P1</td><td>投資可能資金は約65万円。加えて月5万円の入金が可能（バイト代・積立）</td><td>ユーザー申告 7/3-4</td></tr>
+    <tr><td class="n">P2</td><td>時間軸は2030年の長期放置型。売買は年数回。ドローダウン-30%超を受容し、暴落時も積立を止めない意思がある</td><td>ユーザー宣言 7/3（48時間で時間軸が4回変わった経緯を踏まえ「最後の転換」として固定）</td></tr>
+    <tr><td class="n">P3</td><td>テーゼ：AI・量子等のdeep techが生産力と株価を長期で押し上げる。外部予測はJPMorgan $5.5兆・Goldman $5.3兆・McKinsey 約$7兆（2030年まで累計AI capex）</td><td>ユーザー信念＋外部予測（§Ⅱ-9）</td></tr>
+    <tr><td class="n">P4</td><td>ただし「生産性が上がる」≠「今の銘柄が勝ち続ける」（2000年の教訓）。ゆえに指数コア＋チョークポイント＋機械的ローテで勝者交代に備える</td><td>しぐまAI・ユーザー合意</td></tr>
+    <tr><td class="n">P5</td><td>楽天証券。米株は1株単位で購入可・日本株はS株対応確認済み。NISA口座の枠残のみ未確認</td><td>ユーザー確認 7/4</td></tr>
+    <tr><td class="n">P6</td><td>投資ルール集は拘束ではなく参照枠。ただし「売買前に時間軸1行＋新事実1行を書き24時間置く」は合意済みの現行規律</td><td>ユーザー指示 7/3</td></tr>
+    <tr><td class="n">P7</td><td>多少の投機は許容（少ない元手から大きなリターンを目指す）。ローテ枠・サテライト・暴落レバがその受け皿</td><td>ユーザー指示 7/4</td></tr>
+    <tr><td class="n">P8</td><td>市場データは2026-07-03〜04のyfinance実測。米国は7/3休場（独立記念日振替）のため7/2終値。為替161円</td><td>実測</td></tr>
+    <tr><td class="n">P9</td><td>判断の階層規則：<b>買い持ち層では定性＞価格。回転層では価格＞定性。</b>この2つを混同した判断（例：決算失望でAVGOを買い持ち層から外す）は誤りとして扱う</td><td>7/4のAVGO往復から抽出した規律</td></tr>
+  </table></div>
+</section>
+
+<section id="b1">
+  <div class="secthead">
+    <div class="eyebrow">第Ⅱ部 ─ 1</div>
+    <h2>目標の算数──主エンジンは入金力</h2>
+  </div>
+  <ol class="chain">
+    <li><b>当初目標「2028年に3倍」は年率約55%を要求する。</b>放置型の現実的期待（年15-25%）と両立しない。ここで「目標を下げる」か「入金で埋める」かの分岐。</li>
+    <li><b>月5万×54ヶ月＝270万は初期資金の4倍。</b>この構造では資産成長の主因はリターンでなく入金。よって目標は「倍率」でなく「資産額」で置くのが正しい。</li>
+    <li><b>試算：</b>年10%→約440万／<b>年15%→約500万（中心）</b>／年18%→約550万。年率100%のような仮定を必要としない。100%が可能な世界ならローテ枠と暴落レバが捕まえる（§Ⅱ-4）。</li>
+    <li><b>帰結：</b>銘柄選定の優劣より「積立を止めない」が支配項。ゆえにコアは売る理由が構造的に発生しない器（指数）でなければならない → §Ⅱ-2へ。</li>
+  </ol>
+</section>
+
+<section id="b2">
+  <div class="secthead">
+    <div class="eyebrow">第Ⅱ部 ─ 2</div>
+    <h2>コアの選定──QQQに至る消去法</h2>
+    <div class="sub">全候補を実測で比較した。数字は2021-01以降（一部2015年以降）、CAGR／最大ドローダウン。</div>
+  </div>
+  <div class="tblwrap"><table>
+    <tr><th>候補</th><th class="n">CAGR(21-)</th><th class="n">最大DD</th><th>裁定</th></tr>
+    <tr><td><b>QQQ（採用）</b></td><td class="n">17.1%</td><td class="n">-35.1%</td><td>広さ＋新陳代謝（未知の勝者を50位→10位の過程で自動保有）＋GOOGL/META/AMZN込み＋投信でカード積立可</td></tr>
+    <tr><td>SPY</td><td class="n">15.2%</td><td class="n">-24.5%</td><td>却下：QQQとの相関0.93で分散をほぼ買えない（SPY自体が1/3メガテック）のにCAGRが劣る</td></tr>
+    <tr><td>FANG+（10社均等）</td><td class="n">19.7%</td><td class="n">-49.0%</td><td>却下：集中はメイン層の仕事（重複）。DD14pt深く信託報酬0.775%。新陳代謝が上からしか起きない</td></tr>
+    <tr><td>VGT（米テック全部）</td><td class="n">20.1%</td><td class="n">-35.1%</td><td>却下：GICS分類の穴でGOOGL/META/AMZN不在。勝因は半導体過重＝メイン層と二重賭け。カード積立不可</td></tr>
+    <tr><td>SMH（半導体）</td><td class="n">36.8%</td><td class="n">-45.3%</td><td>コアとしては却下：メイン層（NVDA+TSM+AVGO≒実質SMH）と二重賭け。ローテ枠のベンチマークとして採用</td></tr>
+  </table></div>
+  <h3>積立方式の実測（タイミング論争の終結）</h3>
+  <div class="tblwrap"><table>
+    <tr><th>戦略（QQQ月次積立）</th><th class="n">2021-（67ヶ月）</th><th class="n">2015-（139ヶ月）</th></tr>
+    <tr><td>月初固定日DCA</td><td class="n">1.819倍</td><td class="n">3.564倍</td></tr>
+    <tr><td>神の手（毎月最安値で買う超能力）</td><td class="n">1.894倍</td><td class="n">3.682倍</td></tr>
+    <tr><td>押し目-5%待ち（90日高値比）</td><td class="n">1.810倍</td><td class="n">3.425倍</td></tr>
+    <tr><td>毎日積立</td><td class="n">1.811倍</td><td class="n">3.543倍</td></tr>
+  </table></div>
+  <ol class="chain">
+    <li><b>完璧なタイミングの上限価値＝総額+3〜4%。</b>現実的な押し目待ちは2022年の-35%込みでも固定日に負ける（現金の待機コスト）。頻度の差は±0.5%のノイズ。</li>
+    <li><b>投信はノーロードで頻度によるコスト差ゼロ。</b>唯一の実利は楽天カード積立のポイント0.5-1%＝<b>月1回のみ対応</b>。</li>
+    <li><b>結論：</b>NASDAQ100投信・月1カード積立で機械化。ETFスポット買いに切り替える理由は、完璧なタイミング能力があってすら存在しない。</li>
+  </ol>
+</section>
+
+<section id="b3">
+  <div class="secthead">
+    <div class="eyebrow">第Ⅱ部 ─ 3</div>
+    <h2>メイン5本の導出──全陣営原則と値段の規律</h2>
+  </div>
+  <ol class="chain">
+    <li><b>ボトルネック序列（Vault: AIインフラ_どこに賭けるか）</b>：需要は全層で強い（論点でない）。差がつくのは「供給の希少性・モート」×「非混雑（織り込み残地）」。最頑健＝独占モート（NVDA/ASML級）と実CF物理層（電力・冷却）。最脆弱＝OpenAI依存・高レバ・pre-revenue。</li>
+    <li><b>織り込みスクリーニング（7/3-4実測・予想PER）</b>：採用圏＝NVDA 15.3／CEG 17.6／AVGO 18.6／TSM 21.4／GOOGL 24.7。除外圏＝ASML 36・AMAT 37・AMD 39・GEV 45・村田 47・ディスコ 56・東エレク 57・INTC 77・ARM 102・SUMCO 103・アドバンテスト 123。<b>判定規則：同じ倍率なら成長を買う。60倍超は「20年分の完璧」の先払いとみなし買い持ち対象から機械的に除外。</b></li>
+    <li><b>2000年ケーススタディ（歴史検証）</b>：当時の最強PF（Cisco PER100超・Intel・Sun・EMC）はテーゼ（トラフィック100倍）が正しかったのに-82〜96%。殺したのは値段。回復が速かったのはFCF潤沢な独占（MSFT）のみ。→ 上記の除外規則と「FCF黒字の独占/寡占のみ」の条件はこの歴史の実装。</li>
+    <li><b>全陣営原則</b>：GPU対ASICの戦争は勝者を当てるのではなく両陣営を持つ。NVDA（GPU）＋GOOGL/AVGO（ASIC側）＋TSM（全陣営が通る製造）＋CEG（どちらが勝っても要る電力・全候補との相関0.25-0.42で最良の分散材）。ラボ層も同型：OpenAI（SB経由13%）＋Anthropic/DeepMind（GOOGL）＋xAI（SPCX）。</li>
+  </ol>
+
+  <h3>銘柄別ドシエ（テーゼ・事実・殺す条件）</h3>
+
+  <details><summary>NVDA <span class="pill buy">買い持ち 2株</span> <span class="sub">── 帝国は縮む前提で持つ</span></summary><div class="body">
+    <dt>事実（7/4時点）</dt><dd>予想PER15.3・売上成長+85%・高値-17%。ASICサーバー比率は2026年27.8%へ上昇見込み（GPU 69.7%、TrendForce）。Rubinに供給網起因の遅延リスク。NVDA自身は2027年までに$1兆の売上経路を提示。</dd>
+    <dt>テーゼ</dt><dd>fwd15.3は「ASIC台頭＋Rubin遅延＋推論でCUDAモート相対化」の三重苦を織り込んだ値段＝ユニバース最大の歪み。シェアが7割→6割に縮んでも市場が倍々なら売上は伸びる。<b>シェア低下と成長終了を混同しない。</b>Rubin遅延単体はむしろ買い場。</dd>
+    <dt>殺す条件</dt><dd class="kill-line">ASICサーバー比率5割超え＋DC売上の連続減速の同時成立。</dd>
+  </details>
+
+  <details><summary>GOOGL <span class="pill buy">買い持ち 1株</span> <span class="sub">── 支払者×TPU×モデル×量子の総合体</span></summary><div class="body">
+    <dt>事実</dt><dd>Gemini 750M MAU・API 10Bトークン/分。第7世代TPU Ironwood稼働、TPU v8は2026年後半、<b>2027年からMetaへTPU外販開始</b>。2025年9月に分割リスクの司法判断解消（adtech救済措置は係属中）。量子Willowが検証可能な量子超越を達成。Anthropic約14%保有。fwd24.7。</dd>
+    <dt>テーゼ</dt><dd>ユーザーの最大の恐怖（NVDA独占の揺らぎ＝TPUの台頭）を「持つ側」に回ることで構造的にヘッジする。AIの支払者でありチップ設計者でありモデル開発者であり量子研究の先頭である唯一の存在が、総合体として正気の値段。</dd>
+    <dt>殺す条件</dt><dd class="kill-line">Gemini利用指標の減速＋TPU外販頓挫の同時成立。adtechで重い構造的救済措置。</dd>
+  </details>
+
+  <details><summary>AVGO <span class="pill buy">買い持ち 1株</span> <span class="sub">── カスタムASICの胴元（一度誤って外し、理由ごと復権）</span></summary><div class="body">
+    <dt>事実</dt><dd>カスタムASIC市場の約70%を支配、FY2027に$100Bカスタムチップ事業への道筋。AI半導体売上+143%（Q3ガイダンス$16B・+200%）。Meta MTIAマルチギガワット提携（公式）。7/2の-25%は「ネットワーキング$4.1B vs 予想$4.8B未達＋2027見通し据え置き」への失望。fwd18.6。</dd>
+    <dt>テーゼ</dt><dd>NVDAの帝国が縮む分は、ほぼ全部ここへ流れる。GOOGLと合わせてASIC側の両取り。ネットワーキングの1四半期未達と、加速中のカスタムASIC本体を区別する（P9：買い持ち層は定性＞価格）。</dd>
+    <dt>殺す条件</dt><dd class="kill-line">Meta/Google級の大口契約縮小。$100Bロードマップ撤回。TPU外販がAVGO経由から直販へ切り替わる兆候。</dd>
+  </details>
+
+  <details><summary>TSM <span class="pill buy">買い持ち 1株</span> <span class="sub">── 全陣営の通り道・唯一の即時売却例外</span></summary><div class="body">
+    <dt>事実</dt><dd>fwd21.4・売上成長+35%・高値-9%。GPUもTPUもMTIAもTrainiumも先端はほぼ全てTSMCで製造。2nm独走。</dd>
+    <dt>テーゼ</dt><dd>チップ戦争の勝敗に中立な通行料。同じ値段（fwd21）の信越化学が成長+1.3%であることと比較すれば、この倍率の妥当性が分かる。</dd>
+    <dt>殺す条件</dt><dd class="kill-line">台湾有事の兆候＝メイン層で唯一の即時売却（他は保有継続の中の例外）。</b>平時は2nm歩留まり失敗・Intel 18A/Samsungの大口実顧客獲得。</dd>
+  </details>
+
+  <details><summary>CEG <span class="pill buy">買い持ち 1株</span> <span class="sub">── チップ中立の電力。傷も知った上で持つ</span></summary><div class="body">
+    <dt>事実</dt><dd>米最大級の原子力＋MSFT 20年837MW PPA＋META Clinton。高値-40%の内訳＝①3月の2026 EPSガイダンス$11-12が консенсус$11.72に小幅未達＋Calpine統合コスト ②<b>Crane（旧TMI）の系統接続がPJM審査で2031年へ遅延の可能性＝MSFT PPAへの実リスク</b>。一方で新規PPAは継続（6/23 Walmart 176MW・CyrusOne累計1,100MW超）。アナリスト平均目標$401。fwd17.6。全候補との相関0.25-0.42＝定量的に最良の分散材。</dd>
+    <dt>テーゼ</dt><dd>GPUが勝ってもTPUが勝っても電力は要る。実キャッシュフローと署名済み20年契約はAI銘柄の中で最も「物理」に近い担保。</dd>
+    <dt>殺す条件</dt><dd class="kill-line">Crane 2031遅延の確定＋MSFT PPA再交渉の同時成立。ハイパースケーラーの新規PPA停止。</dd>
+  </details>
+</section>
+
+<section id="b4">
+  <div class="secthead">
+    <div class="eyebrow">第Ⅱ部 ─ 4</div>
+    <h2>ローテーション枠──バックテストと生存バイアス</h2>
+    <div class="sub">ユーザー提案「成績の良い銘柄を残し悪い銘柄を切って資金を移す」の機械実装と検証。</div>
+  </div>
+  <div class="tblwrap"><table>
+    <tr><th>戦略（2021/6–2026/7・20銘柄ユニバース・手数料/税/為替未控除）</th><th class="n">最終倍率</th><th class="n">CAGR</th><th class="n">最大DD</th></tr>
+    <tr><td>SMH放置（ベンチマーク）</td><td class="n">4.66倍</td><td class="n">35.3%</td><td class="n">-40.0%</td></tr>
+    <tr><td>20銘柄均等・放置</td><td class="n">7.24倍</td><td class="n">47.6%</td><td class="n">-33.4%</td></tr>
+    <tr><td>上位3・6ヶ月モメンタム・月次</td><td class="n">11.84倍</td><td class="n">60.2%</td><td class="n">-36.9%</td></tr>
+    <tr><td><b>上位3・12ヶ月モメンタム・月次</b></td><td class="n"><b>27.36倍</b></td><td class="n"><b>98.0%</b></td><td class="n">-30.3%</td></tr>
+    <tr><td>同・四半期リバランス（採用形）</td><td class="n">23.08倍</td><td class="n">85.4%</td><td class="n">-31.1%</td></tr>
+  </table></div>
+  <p class="sub">頑健性：開始年をずらしても機能（2022年開始CAGR106%／2023年開始158%／2024年開始175%）。</p>
+  <div class="rule crit"><b>この数字を信じる前に（再現者への警告）</b>
+    ①ユニバースは「2026年に勝者と判明した銘柄」のリスト＝<b>生存バイアスが支配的</b>。2021年の投資家はこのリストを持てない。学術的なクロスセクショナル・モメンタムの実力はベンチ+2〜6%/年。②現在の12ヶ月シグナル上位はMU/WDC/INTC＝崩壊中のメモリ篭。12ヶ月モメンタムはテーマ末期に乗り、崩れてもすぐ降りない。③モメンタム・クラッシュ（急反転月-30〜50%）は文献上有名。④未控除コスト（NISA内なら税は解消）。
+  </div>
+  <ol class="chain">
+    <li><b>制度設計：</b>8万・NISA成長枠可（年間購入合計約113万＜240万で全体が収まる。損益通算不可のデメリットは他に課税益のない学生にはほぼ無意味）。四半期末に12ヶ月リターン上位3を均等保有。裁量介入禁止。</li>
+    <li><b>開始の例外：</b>初回のみ2026年8月第1週（CAPEXガイダンス通過後）。現在のシグナル（崩壊中メモリ）に7月から突っ込まない。</li>
+    <li><b>審判：</b>ローテ台帳に毎四半期の選定と「もしSMH放置なら」を記録。<b>4四半期でSMHに負けたら清算しコアへ統合。</b>年率100%仮説はこの枠が実弾で証明するか棄却する。</li>
+    <li><b>ユニバース31銘柄：</b>NVDA・AMD・GOOGL・TSM・AVGO・MRVL・INTC・MU・WDC・STX・AMAT・QCOM・TXN・ARM・SNDK・Kioxia 285A・三菱重工7011・東エレク8035・ディスコ6146・アドバンテスト6857・SUMCO3436・芝浦メカ6590・OKI6703・イワキ6237＋7/4拡張（周辺爆発を拾うため）：GEV・VRT・MOD・ETN・CCJ ほか。拡張後のバックテスト値は参考扱い。</li>
+  </ol>
+</section>
+
+<section id="b5">
+  <div class="secthead">
+    <div class="eyebrow">第Ⅱ部 ─ 5</div>
+    <h2>サテライト──IONQ・SPCX・ソフトバンク</h2>
+    <div class="sub">全損許容の原石枠。ここだけは「夢の値段」を払うことを自覚的に許可する。ただし各銘柄に出口の定義を先付けする。</div>
+  </div>
+
+  <details><summary>IONQ <span class="pill watch">条件付き 6株</span> <span class="sub">── 量子の質・決算通過後のみ</span></summary><div class="body">
+    <dt>事実</dt><dd>FY2026ガイダンスを$260-270Mへ上方修正（有機成長+100%）。Q2はガイダンス上限を15%超過。256量子ビットのチップ型第6世代を初売却。AQ64達成目前、2030年に200万アルゴリズム量子ビットのロードマップ。業界最大の単一機関投資で資本増強。高値-40%。</dd>
+    <dt>テーゼ</dt><dd>量子ETF（QTUM）は中身が実質半導体（SMHと相関0.91）＝純粋な量子露出は個別でしか買えない。売上とRPOが実在する唯一級の量子リーダー。</dd>
+    <dt>殺す条件</dt><dd class="kill-line">ガイダンス減速・希薄化加速（株数増加率>年20%目安）・AQロードマップ未達・イオントラップ方式が誤り訂正競争で敗北。</dd>
+  </details>
+
+  <details><summary>SPCX <span class="pill watch">保有1株＋最大2株</span> <span class="sub">── 宇宙覇権2040。価格でなくマイルストーンで買う</span></summary><div class="body">
+    <dt>事実</dt><dd>取得$165・現値$153（上場来安値圏）。実体はStarlink＋打ち上げ＋xAI吸収済みの赤字複合体（月$1B焼却）。7/31にStarship Flight 13。</dd>
+    <dt>テーゼ</dt><dd>ユーザーの超長期ビュー「2040年に宇宙覇権」の唯一の切符＋非上場AI（xAI）への唯一の経路。宇宙ETFは実測で死亡（ARKX CAGR10.2%）のため代替なし。</dd>
+    <dt>ルール</dt><dd>月$1B焼却の非上場体では「安い」と「壊れかけ」が価格で区別できない→<b>ナンピン禁止・マイルストーン確認後の押し目のみ</b>。①Flight 13成功→$140台で+1株 ②Starlink黒字幅拡大 or 商用ペイロード定期化→+1株。上限3株（約7.4万＝総資産8%）。</dd>
+    <dt>殺す条件</dt><dd class="kill-line">7/31失敗・大幅延期→売却判定。ダウンラウンド増資。xAI焼却が宇宙事業を圧迫。</dd>
+  </details>
+
+  <details><summary>SB 9984 <span class="pill watch">イベント枠 約6万</span> <span class="sub">── OpenAI IPOの切符（企業の保有ではない）</span></summary><div class="body">
+    <dt>事実</dt><dd>OpenAIは2026年6月にIPO申請済み（目標$1兆規模）。NYT報道の2027年延期観測でSBは-12%急落→高値-28.5%（¥6,169）。SBのOpenAI保有約13%・累計投資$646億・含み益約8兆円。ARM約9割保有がNAVの土台。fwd20.9・PBR2.0。</dd>
+    <dt>テーゼ</dt><dd>押し目の正体＝IPO延期失望そのもの。買うことは「IPOは遅れても来る」への賭け。S-1申請済みでイベントが公文書レベルで実在する点が通常のpre-IPO思惑と異なる。$1兆上場ならSB持分約$130B＝時価総額の約30%相当のNAV押し上げ。</dd>
+    <dt>構造的緊張（明記）</dt><dd><b>本PFのプレモータムが最重要カナリアと定めた「OpenAIの資金繰り」の楽観側に張る唯一のポジション。</b>シナリオCで最初に死ぬ。ゆえに3つの枷：6万上限・イベント消滅で即撤退・保有中はカナリア監視を必須化。</dd>
+    <dt>殺す条件</dt><dd class="kill-line">OpenAIの調達難・ダウンラウンド報道＝イベント消滅で即撤退（バリュー保有への変質禁止）。</dd>
+  </details>
+</section>
+
+<section id="b6">
+  <div class="secthead">
+    <div class="eyebrow">第Ⅱ部 ─ 6</div>
+    <h2>却下の記録──同じ議論を繰り返さないために</h2>
+  </div>
+  <div class="tblwrap"><table>
+    <tr><th>候補</th><th>却下理由（すべて実測・出典つき）</th></tr>
+    <tr><td>レバETFの常時保有（SOXL/TQQQ/AMDL/レバナス）</td><td>2021年以降SMH 5.58倍の間にSOXL(3x)は6.10倍＝実質1.1倍相当・途中DD-90.5%。ボラ減価＋金利コストで長期保有は死亡。<b>暴落プロトコル専用として限定採用</b></td></tr>
+    <tr><td>宇宙・ロボETF（ARKX/UFO/BOTZ/ROBO）</td><td>CAGR 2.6〜15.5%・DD-44〜-56%＝指数以下。中身は衛星TV・防衛大手＋高経費率。「テーマにETFができた時点でマーケティング」</td></tr>
+    <tr><td>高PER銘柄群（東エレク57・INTC77・ARM102・SUMCO103・アドバンテスト123）</td><td>2000年型の値付け（20年分の完璧の先払い）。買い持ち不適。回転ユニバースでは機械が扱う</td></tr>
+    <tr><td>メモリの買い持ち（Kioxia/SNDK/WDC/STX/韓国勢）</td><td>1年+400〜3600%後の巻き戻し中。シクリカルピークの低PER（4.9〜9.3）は罠として逆読み。回転専用。<b>例外＝MU（SCA脱シクリカル化の試験合格で昇格）</b></td></tr>
+    <tr><td>AMD</td><td>OpenAI 6GW＋Meta 6GWで第2勢力の実体はあるがfwd39は物語込みの値段で、アンカー顧客が最脆弱ノード（OpenAI）。回転のみ</td></tr>
+    <tr><td>信仰銘柄（OKI・ミライニ546A・IMV）</td><td>OKI＝減収の低収益老舗（OPM4.7%）の政策テーマ再評価済み。ミライニ＝半導体商社のパススルー。IMV＝接続の弱い400億。データの裏付けなし</td></tr>
+    <tr><td>水処理・上流コモディティ（銅・電線等）</td><td>スマイルカーブ：利益は設計・独占製造・契約電力に集中。上流はテーマ純度不足。例外候補（信越・CCJ・栗田）のみ監視</td></tr>
+    <tr><td>信越化学のメイン編入</td><td>質は本物（ウェハ首位・EUVブランクス独占・ネットキャッシュ）だがfwd21.1で成長+1.3%＝<b>TSMと同じ値段で成長1/30</b>。¥6,000-6,500の押し目監視のみ</td></tr>
+    <tr><td>モメンタム投信（SMT系）・FANG+・Top10・Zテック20等</td><td>ローテ枠の自前実装で代替（コスト安・制御可能）。コア候補としては§Ⅱ-2で却下済み</td></tr>
+  </table></div>
+</section>
+
+<section id="b7">
+  <div class="secthead">
+    <div class="eyebrow">第Ⅱ部 ─ 7</div>
+    <h2>シナリオツリーとカナリア</h2>
+    <div class="sub">崩壊は「需要」からではなく「資金繰り」から始まる（プレモータム）。軍拡的動機がROI弱気論を無効化しうるため、弱点は「払い続けられるか」に集約される。</div>
+  </div>
+  <div class="tblwrap"><table>
+    <tr><th>シナリオ</th><th class="n">主観確率</th><th>何が起きるか</th><th>行動</th></tr>
+    <tr><td><b>A 継続</b></td><td class="n">50%</td><td>CAPEX増勢・Rubin立ち上げ・ASIC共存拡大</td><td>何もしない。積立継続</td></tr>
+    <tr><td><b>B 消化調整</b></td><td class="n">35%</td><td>2026H2-27にCAPEX横ばい・メモリ崩落・高ベータ死</td><td>売らない・積立増額・プールで最出遅れを拾う。ローテ枠は審判で自然清算も</td></tr>
+    <tr><td><b>C 断裂</b></td><td class="n">15%</td><td>OpenAI/循環ファイナンス断裂 or 台湾。QQQ -40〜60%</td><td>TSM・SBのみ売却。暴落レバ発動。<b>積立は死んでも止めない</b>（2000-2005年にDCAを続けた者だけが勝った）</td></tr>
+  </table></div>
+  <div class="rule"><b>カナリア（優先順・週次チェック対象）</b>
+    ① OpenAIのマネタイズ vs 計算コミットメント（売上加速停止・調達難・契約縮小）── 最重要。SB保有中は必須監視<br>
+    ② ハイパースケーラー決算のCAPEXガイダンス（7末-8月が分水嶺）<br>
+    ③ ネオクラウド（CRWV/NBIS等）の借換スプレッド拡大
+  </div>
+</section>
+
+<section id="b8">
+  <div class="secthead">
+    <div class="eyebrow">第Ⅱ部 ─ 8</div>
+    <h2>検証制度──エッジは主張でなく実績</h2>
+    <div class="sub">この計画には検証装置が3つ埋め込まれている。1年以内に、思い込みはすべて数字で審判される。</div>
+  </div>
+  <div class="tblwrap"><table>
+    <tr><th>装置</th><th>検証対象</th><th>審判</th></tr>
+    <tr><td>ローテ台帳</td><td>「勝者を残し敗者を切る」戦略の実力（年率100%仮説）</td><td>4四半期でSMHに勝てなければ清算しコアへ統合</td></tr>
+    <tr><td>押し目台帳</td><td>ユーザーの「押し目を上手く買える」という自己認識</td><td>裁量買いごとに機械ルール対照価格を記録。4四半期でDCAに負けたら全自動化</td></tr>
+    <tr><td>昇格・降格制度</td><td>個別テーゼ（MU脱シクリカル化・SPCXマイルストーン・SBイベント）</td><td>決算・マイルストーン・報道で機械的に昇格/撤退</td></tr>
+  </table></div>
+  <div class="rule"><b>売買の共通規律（P6）</b>
+    売買前に「時間軸1行＋何の新事実か1行」を書き、24時間置く。テーゼの新事実（CAPEX・受注・技術・規制）による転換は正当な更新。価格の動きと他人のポストだけを理由とする転換はノイズ反応。事前コミットは未来の自分が賢い場合のためでなく、感情的な場合のためにある。
+  </div>
+</section>
+
+<section id="b9">
+  <div class="secthead">
+    <div class="eyebrow">第Ⅱ部 ─ 9</div>
+    <h2>データソースと再現手順</h2>
+  </div>
+  <h3>再現手順（別のAIへ）</h3>
+  <ol class="chain">
+    <li>前提表P1-P9の真偽をユーザーに確認する（特に資金・入金力・時間軸・受容DD）。</li>
+    <li>yfinanceで全候補の予想PER・売上成長・52週高値比・2021年以降CAGR/最大DDを実測する（本書の数字は2026-07-03〜04取得。株価・PERは日々変わるため再取得が必須。ただし判定規則──60倍超除外・同倍率なら成長・全陣営原則──は不変のはず）。</li>
+    <li>QQQ/SPY/FANG+/VGT/SMHの相関行列と積立方式シミュレーション（固定日vs神の手vs押し目待ちvs毎日）を再実行する。</li>
+    <li>モメンタム・ローテーションのバックテストを再実行し、<b>必ずユニバース生存バイアスを警告に含める</b>。</li>
+    <li>定性は一次情報を優先：Broadcom IR（AI売上・Meta提携）、Google公式（Ironwood/Willow）、Micron IR（SCA 16本・$100B RPO）、Constellation IR＋PJM（Crane審査）、IonQ IR（ガイダンス）、OpenAI IPO申請報道、バークシャー変更報告書。</li>
+    <li>結論が本書と異なる場合、差分は（a）市場価格の変化（b）前提P1-P9の変化（c）判定規則の否定、のどれかに分類して提示する。（c）の場合のみ設計を再審する。</li>
+  </ol>
+  <h3>主要ソース</h3>
+  <p class="sub" style="line-height:2">
+    市場データ：yfinance（米2026-07-02終値・日2026-07-03〜04終値）／
+    AI capex予測：JPMorgan・Goldman Sachs・McKinsey（2030年まで累計$5.3〜7兆）／
+    NVDA競合環境：TrendForce（ASICサーバー27.8%・Rubin遅延）／
+    AVGO：FY26Q2決算（AI半導体+143%・Q3ガイダンス$16B）・Meta MTIA公式提携／
+    GOOGL：Ironwood/TPU v8・Meta外販2027・2025年9月独禁法判断・Willow／
+    CEG：2026ガイダンス・Crane/PJM・Walmart/CyrusOne PPA／
+    MU：SCA16本・take-or-pay約$100B・前受$22B／
+    IonQ：FY26ガイダンス$260-270M・256qubit初売却／
+    OpenAI：2026年6月IPO申請・目標$1兆・SB保有13%／
+    ローテ検証・積立シミュレーション：しぐまAI自作スクリプト（Vault会話ログ2026-07-03〜04に記録）
+  </p>
+</section>
+
+<div class="foot">
+  DeepTech作戦計画書 2026–2030 ｜ v3.2（2026-07-04）｜ 生成：しぐまAI ｜ 原本はObsidian Vault（長期放置ポートフォリオ2030・執行監視マスタープラン2026H2・DeepTech銘柄総ざらい）に保存、GitHubへバックアップ済み。<br>
+    本書は投資助言ではなくユーザー自身の意思決定の記録である。数字は作成時点の実測値であり、執行前に再取得すること。
+</div>
+
+</div>
