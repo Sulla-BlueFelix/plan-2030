@@ -144,7 +144,7 @@ a{color:var(--accent)}
       <li><a href="#b2">コアの選定──QQQに至る消去法</a></li>
       <li><a href="#b3">メイン5本の導出──全陣営原則と値段の規律</a></li>
       <li><a href="#b4">ローテーション枠──バックテストと生存バイアス</a></li>
-      <li><a href="#b4b">TQQQ発動ライン──頻度実測で4段階に設計</a></li>
+      <li><a href="#b4b">TQQQ発動ライン・段階利確──頻度実測とボラ連動の出口設計</a></li>
       <li><a href="#b5">サテライト──IONQ・SPCX・ソフトバンク</a></li>
       <li><a href="#b6">却下の記録（同じ議論を繰り返さないために）</a></li>
       <li><a href="#b7">シナリオツリーとカナリア</a></li>
@@ -195,7 +195,7 @@ a{color:var(--accent)}
     月3万＝コアへ自動積立（無条件）。月2万＝プールに貯め、四半期6万を「メイン5本のうち高値からの下落率最大の銘柄」または押し目待ち銘柄へ。
   </div>
   <div class="rule warn"><b>暴落時の行動（事前コミット）</b>
-    売らない。積立を増額する（「押したら入金」）。QQQが<b>50週線割れ（頻度重視の第1弾）〜200週線・フィボナッチ合流（深い段）</b>に来たらTQQQへ4段階で投入（詳細は<a href="#b4b">§Ⅱ-4-1</a>）。前回高値回復で全売却・第4弾は2000年型では全損の宝くじサイズと自覚。
+    売らない。積立を増額する（「押したら入金」）。QQQが<b>50週線割れ（頻度重視の第1弾）〜200週線・フィボナッチ合流（深い段）</b>に来たらTQQQへ4段階で投入（詳細は<a href="#b4b">§Ⅱ-4-1</a>）。撤収は<b>3分割の段階利確</b>（1/3=前回高値回復／1/3=実現ボラ28%超か週足10週線割れ／1/3=より長く保有）。第4弾は2000年型では全損の宝くじサイズと自覚。
   </div>
 </section>
 
@@ -234,7 +234,7 @@ a{color:var(--accent)}
     <tr><td><b>SB 9984</b> <span class="num sub">¥6,169</span></td><td>OpenAI IPOイベント（13%保有）</td><td class="n">S株≒6万（2分割）</td><td>¥5,700-6,200<br><span class="sub">＝現値は38%フィボ¥6,190の真上。今まさに第一支持を試している最中</span></td><td class="kill-line">OpenAI調達難・ダウンラウンド報道＝イベント消滅で即撤退</td></tr>
     <tr><td><b>SPCX</b>（保有1株） <span class="num sub">$153</span></td><td>宇宙覇権2040＋xAI</td><td class="n">最大+2株（上限3株≒7.4万）</td><td><b>マイルストーン後の押し目のみ</b>：①Flight 13成功→$140台で+1株 ②Starlink黒字幅拡大/商用定期化→+1株</td><td>7/31 Flight 13失敗・大幅延期・増資条件悪化→売却判定</td></tr>
     <tr><td><b>信越化学 4063</b> <span class="num sub">¥6,958</span></td><td>ウェハ・EUVブランクス材料</td><td class="n">S株≒4-6万</td><td><b>第1弾¥6,450-6,700</b>（38%フィボ＋直近安値の合流・確度高）<br><b>第2弾¥6,000</b>（50%フィボ・深押し限定）</td><td>—（質は合格・値段待ち）</td></tr>
-    <tr><td><b>TQQQ</b></td><td>暴落の凸性</td><td class="n">3万+5万×3段</td><td id="tqqq-trigger-row-html">§Ⅱ-4-1参照：<b>第1弾=50週線割れ(約1.7年に1回)</b>／第2〜4弾=200週線・フィボ合流〜2000年型（頻度は年単位〜稀）</td><td>QQQ前回高値回復で全売却（第1弾は前回決済までクールダウン）</td></tr>
+    <tr><td><b>TQQQ</b></td><td>暴落の凸性</td><td class="n">3万+5万×3段</td><td id="tqqq-trigger-row-html">§Ⅱ-4-1参照：<b>第1弾=50週線割れ(約1.7年に1回)</b>／第2〜4弾=200週線・フィボ合流〜2000年型（頻度は年単位〜稀）</td><td><b>3分割の段階利確</b>（1/3高値回復／1/3ボラ28%超or10週線割れ／1/3長期保有）。第1弾は前回決済までクールダウン</td></tr>
   </table></div>
 </section>
 
@@ -378,31 +378,31 @@ a{color:var(--accent)}
     <dt>事実（7/4時点）</dt><dd>予想PER15.3・売上成長+85%・高値-17%。ASICサーバー比率は2026年27.8%へ上昇見込み（GPU 69.7%、TrendForce）。Rubinに供給網起因の遅延リスク。NVDA自身は2027年までに$1兆の売上経路を提示。</dd>
     <dt>テーゼ</dt><dd>fwd15.3は「ASIC台頭＋Rubin遅延＋推論でCUDAモート相対化」の三重苦を織り込んだ値段＝ユニバース最大の歪み。シェアが7割→6割に縮んでも市場が倍々なら売上は伸びる。<b>シェア低下と成長終了を混同しない。</b>Rubin遅延単体はむしろ買い場。</dd>
     <dt>殺す条件</dt><dd class="kill-line">ASICサーバー比率5割超え＋DC売上の連続減速の同時成立。</dd>
-  </details>
+  </div></details>
 
   <details><summary>GOOGL <span class="pill buy">買い持ち 1株</span> <span class="sub">── 支払者×TPU×モデル×量子の総合体</span></summary><div class="body">
     <dt>事実</dt><dd>Gemini 750M MAU・API 10Bトークン/分。第7世代TPU Ironwood稼働、TPU v8は2026年後半、<b>2027年からMetaへTPU外販開始</b>。2025年9月に分割リスクの司法判断解消（adtech救済措置は係属中）。量子Willowが検証可能な量子超越を達成。Anthropic約14%保有。fwd24.7。</dd>
     <dt>テーゼ</dt><dd>ユーザーの最大の恐怖（NVDA独占の揺らぎ＝TPUの台頭）を「持つ側」に回ることで構造的にヘッジする。AIの支払者でありチップ設計者でありモデル開発者であり量子研究の先頭である唯一の存在が、総合体として正気の値段。</dd>
     <dt>殺す条件</dt><dd class="kill-line">Gemini利用指標の減速＋TPU外販頓挫の同時成立。adtechで重い構造的救済措置。</dd>
-  </details>
+  </div></details>
 
   <details><summary>AVGO <span class="pill buy">買い持ち 1株</span> <span class="sub">── カスタムASICの胴元（一度誤って外し、理由ごと復権）</span></summary><div class="body">
     <dt>事実</dt><dd>カスタムASIC市場の約70%を支配、FY2027に$100Bカスタムチップ事業への道筋。AI半導体売上+143%（Q3ガイダンス$16B・+200%）。Meta MTIAマルチギガワット提携（公式）。7/2の-25%は「ネットワーキング$4.1B vs 予想$4.8B未達＋2027見通し据え置き」への失望。fwd18.6。</dd>
     <dt>テーゼ</dt><dd>NVDAの帝国が縮む分は、ほぼ全部ここへ流れる。GOOGLと合わせてASIC側の両取り。ネットワーキングの1四半期未達と、加速中のカスタムASIC本体を区別する（P9：買い持ち層は定性＞価格）。</dd>
     <dt>殺す条件</dt><dd class="kill-line">Meta/Google級の大口契約縮小。$100Bロードマップ撤回。TPU外販がAVGO経由から直販へ切り替わる兆候。</dd>
-  </details>
+  </div></details>
 
   <details><summary>TSM <span class="pill buy">買い持ち 1株</span> <span class="sub">── 全陣営の通り道・唯一の即時売却例外</span></summary><div class="body">
     <dt>事実</dt><dd>fwd21.4・売上成長+35%・高値-9%。GPUもTPUもMTIAもTrainiumも先端はほぼ全てTSMCで製造。2nm独走。</dd>
     <dt>テーゼ</dt><dd>チップ戦争の勝敗に中立な通行料。同じ値段（fwd21）の信越化学が成長+1.3%であることと比較すれば、この倍率の妥当性が分かる。</dd>
-    <dt>殺す条件</dt><dd class="kill-line">台湾有事の兆候＝メイン層で唯一の即時売却（他は保有継続の中の例外）。</b>平時は2nm歩留まり失敗・Intel 18A/Samsungの大口実顧客獲得。</dd>
-  </details>
+    <dt>殺す条件</dt><dd class="kill-line">台湾有事の兆候＝メイン層で唯一の即時売却（他は保有継続の中の例外）。平時は2nm歩留まり失敗・Intel 18A/Samsungの大口実顧客獲得。</dd>
+  </div></details>
 
   <details><summary>CEG <span class="pill buy">買い持ち 1株</span> <span class="sub">── チップ中立の電力。傷も知った上で持つ</span></summary><div class="body">
-    <dt>事実</dt><dd>米最大級の原子力＋MSFT 20年837MW PPA＋META Clinton。高値-40%の内訳＝①3月の2026 EPSガイダンス$11-12が консенсус$11.72に小幅未達＋Calpine統合コスト ②<b>Crane（旧TMI）の系統接続がPJM審査で2031年へ遅延の可能性＝MSFT PPAへの実リスク</b>。一方で新規PPAは継続（6/23 Walmart 176MW・CyrusOne累計1,100MW超）。アナリスト平均目標$401。fwd17.6。全候補との相関0.25-0.42＝定量的に最良の分散材。</dd>
+    <dt>事実</dt><dd>米最大級の原子力＋MSFT 20年837MW PPA＋META Clinton。高値-40%の内訳＝①3月の2026 EPSガイダンス$11-12が コンセンサス$11.72に小幅未達＋Calpine統合コスト ②<b>Crane（旧TMI）の系統接続がPJM審査で2031年へ遅延の可能性＝MSFT PPAへの実リスク</b>。一方で新規PPAは継続（6/23 Walmart 176MW・CyrusOne累計1,100MW超）。アナリスト平均目標$401。fwd17.6。全候補との相関0.25-0.42＝定量的に最良の分散材。</dd>
     <dt>テーゼ</dt><dd>GPUが勝ってもTPUが勝っても電力は要る。実キャッシュフローと署名済み20年契約はAI銘柄の中で最も「物理」に近い担保。</dd>
     <dt>殺す条件</dt><dd class="kill-line">Crane 2031遅延の確定＋MSFT PPA再交渉の同時成立。ハイパースケーラーの新規PPA停止。</dd>
-  </details>
+  </div></details>
 </section>
 
 <section id="b4">
@@ -472,7 +472,33 @@ a{color:var(--accent)}
   <div class="rule"><b>ボリンジャーバンドの正しい使い方（第2弾以降の確認フィルター）</b>
     週足20週BB-2σは単独では使えない：軽い調整でも深刻な暴落でも同様に触れるため固定の価格目標にはならない。<b>第2弾以降は価格到達時に同時に週足BB-2σを下回っているかを確認してから執行する</b>。
   </div>
-  <p class="sub">撤収：QQQ前回高値回復で全売却（欲の延長禁止）。第1弾は数週間〜数ヶ月、第2弾以降は数年単位のサイクルになりうると認識する。再計算タイミング：四半期点検（2月・8月）または新高値更新時に、50週線・強気相場の起点安値・ATHを更新して水準を引き直す。</p>
+  <h3>撤収＝段階利確（7/4改訂：全額を高値回復で売る旧ルールを撤回）</h3>
+  <p>ユーザー着想：「安値で仕込めたなら持ち続けてもいい。目減りするとはいえ上がる方に賭けるなら等倍より利益が出るはず」を実データで検証した。</p>
+
+  <h4>検証：TQQQ実績 ÷ QQQ単純3倍（期間別）</h4>
+  <div class="tblwrap"><table>
+    <tr><th>相場</th><th class="n">年率実現ボラ</th><th class="n">TQQQ実績</th><th class="n">単純3倍</th><th class="n">実績/単純3倍</th></tr>
+    <tr><td>滑らかな上昇(2013-14)</td><td class="n">13%</td><td class="n">3.44倍</td><td class="n">2.73倍</td><td class="n">126.0%</td></tr>
+    <tr><td>滑らかな上昇(2017)</td><td class="n">10%</td><td class="n">2.13倍</td><td class="n">1.94倍</td><td class="n">109.5%</td></tr>
+    <tr><td>滑らかな上昇(2023-24)</td><td class="n">18%</td><td class="n">4.83倍</td><td class="n">3.87倍</td><td class="n">124.6%</td></tr>
+    <tr><td>荒れたレンジ(2015-16)</td><td class="n">20%</td><td class="n">0.83倍</td><td class="n">0.96倍</td><td class="n">86.2%</td></tr>
+    <tr><td>荒れた下落(2018)</td><td class="n">23%</td><td class="n">0.76倍</td><td class="n">0.94倍</td><td class="n">80.8%</td></tr>
+    <tr><td>コロナ急落+V字回復(2020)</td><td class="n">36%</td><td class="n">2.00倍</td><td class="n">2.38倍</td><td class="n">84.1%</td></tr>
+    <tr><td>荒れた下落(2022)</td><td class="n">32%</td><td class="n">-80%</td><td class="n">(理論0%)</td><td class="n">壊滅</td></tr>
+  </table></div>
+  <p class="sub"><b>年率実現ボラが10-18%の滑らかな上昇局面では、TQQQは単純3倍を上回る</b>（複利が味方する）。20%を超えて荒れると劣後し始め、2022年型の長期下落では壊滅する。<b>減価を決めるのは保有期間ではなく実現ボラティリティ。</b>これがユーザーの直感（安値で仕込めたなら持ち続けてよい）が成立する条件を客観的に示す。</p>
+
+  <h4>3分割の段階利確ルール</h4>
+  <div class="tblwrap"><table>
+    <tr><th>分割</th><th>扱い</th><th>判定基準</th></tr>
+    <tr><td>1/3</td><td>前回高値回復で機械的に利確</td><td>安全弁。「前回高値=新高値更新の入口で早売りしてしまう」問題への回答——全部は売らない</td></tr>
+    <tr><td>1/3</td><td>保有継続</td><td><b>QQQ20日実現ボラ(年率)が28%超 or 週足10週線割れ</b>、いずれか早い方で利確</td></tr>
+    <tr><td>1/3</td><td>さらに保有継続</td><td>より緩い基準（週足40週線割れ or 次回四半期点検）まで引っ張り、複利効果を最大限取りにいく</td></tr>
+  </table></div>
+  <div class="rule crit"><b>非常ブレーキ（全分割共通・例外なし）</b>
+    実現ボラ28%超では機械的に手仕舞う。「安値で仕込んだから大丈夫」という前提自体が崩れる局面（2022年型の長期荒れ相場）を想定した歯止め。
+  </div>
+  <p class="sub">再計算タイミング：四半期点検（2月・8月）または新高値更新時に、50週線・強気相場の起点安値・ATHを更新して水準を引き直す。</p>
 </section>
 
 <section id="b5">
@@ -486,21 +512,21 @@ a{color:var(--accent)}
     <dt>事実</dt><dd>FY2026ガイダンスを$260-270Mへ上方修正（有機成長+100%）。Q2はガイダンス上限を15%超過。256量子ビットのチップ型第6世代を初売却。AQ64達成目前、2030年に200万アルゴリズム量子ビットのロードマップ。業界最大の単一機関投資で資本増強。高値-40%。</dd>
     <dt>テーゼ</dt><dd>量子ETF（QTUM）は中身が実質半導体（SMHと相関0.91）＝純粋な量子露出は個別でしか買えない。売上とRPOが実在する唯一級の量子リーダー。</dd>
     <dt>殺す条件</dt><dd class="kill-line">ガイダンス減速・希薄化加速（株数増加率>年20%目安）・AQロードマップ未達・イオントラップ方式が誤り訂正競争で敗北。</dd>
-  </details>
+  </div></details>
 
   <details><summary>SPCX <span class="pill watch">保有1株＋最大2株</span> <span class="sub">── 宇宙覇権2040。価格でなくマイルストーンで買う</span></summary><div class="body">
     <dt>事実</dt><dd>取得$165・現値$153（上場来安値圏）。実体はStarlink＋打ち上げ＋xAI吸収済みの赤字複合体（月$1B焼却）。7/31にStarship Flight 13。</dd>
     <dt>テーゼ</dt><dd>ユーザーの超長期ビュー「2040年に宇宙覇権」の唯一の切符＋非上場AI（xAI）への唯一の経路。宇宙ETFは実測で死亡（ARKX CAGR10.2%）のため代替なし。</dd>
     <dt>ルール</dt><dd>月$1B焼却の非上場体では「安い」と「壊れかけ」が価格で区別できない→<b>ナンピン禁止・マイルストーン確認後の押し目のみ</b>。①Flight 13成功→$140台で+1株 ②Starlink黒字幅拡大 or 商用ペイロード定期化→+1株。上限3株（約7.4万＝総資産8%）。</dd>
     <dt>殺す条件</dt><dd class="kill-line">7/31失敗・大幅延期→売却判定。ダウンラウンド増資。xAI焼却が宇宙事業を圧迫。</dd>
-  </details>
+  </div></details>
 
   <details><summary>SB 9984 <span class="pill watch">イベント枠 約6万</span> <span class="sub">── OpenAI IPOの切符（企業の保有ではない）</span></summary><div class="body">
     <dt>事実</dt><dd>OpenAIは2026年6月にIPO申請済み（目標$1兆規模）。NYT報道の2027年延期観測でSBは-12%急落→高値-28.5%（¥6,169）。SBのOpenAI保有約13%・累計投資$646億・含み益約8兆円。ARM約9割保有がNAVの土台。fwd20.9・PBR2.0。</dd>
     <dt>テーゼ</dt><dd>押し目の正体＝IPO延期失望そのもの。買うことは「IPOは遅れても来る」への賭け。S-1申請済みでイベントが公文書レベルで実在する点が通常のpre-IPO思惑と異なる。$1兆上場ならSB持分約$130B＝時価総額の約30%相当のNAV押し上げ。</dd>
     <dt>構造的緊張（明記）</dt><dd><b>本PFのプレモータムが最重要カナリアと定めた「OpenAIの資金繰り」の楽観側に張る唯一のポジション。</b>シナリオCで最初に死ぬ。ゆえに3つの枷：6万上限・イベント消滅で即撤退・保有中はカナリア監視を必須化。</dd>
     <dt>殺す条件</dt><dd class="kill-line">OpenAIの調達難・ダウンラウンド報道＝イベント消滅で即撤退（バリュー保有への変質禁止）。</dd>
-  </details>
+  </div></details>
 </section>
 
 <section id="b6">
