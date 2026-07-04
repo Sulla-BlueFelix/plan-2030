@@ -144,6 +144,7 @@ a{color:var(--accent)}
       <li><a href="#b2">コアの選定──QQQに至る消去法</a></li>
       <li><a href="#b3">メイン5本の導出──全陣営原則と値段の規律</a></li>
       <li><a href="#b4">ローテーション枠──バックテストと生存バイアス</a></li>
+      <li><a href="#b4b">TQQQ発動ライン──200週線・フィボ・BBの実測</a></li>
       <li><a href="#b5">サテライト──IONQ・SPCX・ソフトバンク</a></li>
       <li><a href="#b6">却下の記録（同じ議論を繰り返さないために）</a></li>
       <li><a href="#b7">シナリオツリーとカナリア</a></li>
@@ -194,7 +195,7 @@ a{color:var(--accent)}
     月3万＝コアへ自動積立（無条件）。月2万＝プールに貯め、四半期6万を「メイン5本のうち高値からの下落率最大の銘柄」または押し目待ち銘柄へ。
   </div>
   <div class="rule warn"><b>暴落時の行動（事前コミット）</b>
-    売らない。積立を増額する（「押したら入金」）。QQQが高値-35%/-50%/-65%でTQQQへ各5万（前回高値回復で全売却・2000年型では全損の宝くじサイズ）。
+    売らない。積立を増額する（「押したら入金」）。QQQが<b>200週線・フィボナッチ・週足ボリンジャーの合流点</b>に来たらTQQQへ段階投入（詳細は<a href="#b4b">§Ⅱ-4-1</a>）。前回高値回復で全売却・第3弾は2000年型では全損の宝くじサイズと自覚。
   </div>
 </section>
 
@@ -208,8 +209,8 @@ a{color:var(--accent)}
     <tr><th>銘柄</th><th>押さえるテーマ</th><th>区分</th><th class="n">数量</th><th>タイミング・目安価格</th><th>決定的カタリスト（内部／外部）</th></tr>
     <tr><td><b>QQQ投信</b></td><td>deep tech全体のベータ</td><td><span class="pill core">コア</span></td><td class="n">20万＋月3万</td><td>着金後<b>即日</b>・無条件</td><td>なし（無条件執行が結論。§Ⅱ-2）</td></tr>
     <tr><td><b>NVDA</b> <span class="num sub">$195</span></td><td>AI計算（GPU）</td><td><span class="pill buy">買い持ち</span></td><td class="n">2株</td><td>1株目＝第1弾（$175-190理想）<br>2株目＝第3弾</td><td>8月末決算（DC売上・Rubin出荷）／ASICサーバー比率・CAPEX</td></tr>
-    <tr><td><b>GOOGL</b> <span class="num sub">$360</span></td><td>モデル×TPU×量子</td><td><span class="pill buy">買い持ち</span></td><td class="n">1株</td><td>第2弾。$320-345なら前倒し可</td><td>7月末決算（Cloud・Gemini・TPU外販）／adtech判決</td></tr>
-    <tr><td><b>AVGO</b> <span class="num sub">$360</span></td><td>カスタムASIC＋AI-NW</td><td><span class="pill buy">買い持ち</span></td><td class="n">1株</td><td>第2弾。$335-360</td><td><b>9月上旬決算</b>（AI売上$16Bガイダンス達成か）／Meta MTIA展開</td></tr>
+    <tr><td><b>GOOGL</b> <span class="num sub">$360</span></td><td>モデル×TPU×量子</td><td><span class="pill buy">買い持ち</span></td><td class="n">1株</td><td>第2弾。<b>$310-320</b>で前倒し可</td><td>7月末決算（Cloud・Gemini・TPU外販）／adtech判決</td></tr>
+    <tr><td><b>AVGO</b> <span class="num sub">$360</span></td><td>カスタムASIC＋AI-NW</td><td><span class="pill buy">買い持ち</span></td><td class="n">1株</td><td>第2弾。<b>$335-350</b></td><td><b>9月上旬決算</b>（AI売上$16Bガイダンス達成か）／Meta MTIA展開</td></tr>
     <tr><td><b>TSM</b> <span class="num sub">$434</span></td><td>先端製造の独占</td><td><span class="pill buy">買い持ち</span></td><td class="n">1株</td><td>第2弾。$400-430</td><td>7月中旬決算（2nm・値上げ）／<span class="kill-line">台湾情勢＝唯一の即時売却</span></td></tr>
     <tr><td><b>CEG</b> <span class="num sub">$239</span></td><td>チップ中立のAI電力</td><td><span class="pill buy">買い持ち</span></td><td class="n">1株</td><td>第1弾。<b>$245回復＋出来高で入る／$235割れ中は触らない</b></td><td>8月上旬決算（EPSガイダンス$11-12維持）・新規PPA／CraneのPJM審査</td></tr>
     <tr><td><b>IONQ</b> <span class="num sub">$49</span></td><td>量子（純粋プレイ）</td><td><span class="pill watch">条件付き</span></td><td class="n">6株</td><td>第3弾。<b>Q2決算（8月頭）通過後のみ</b></td><td>ガイダンス$260-270M維持・AQ64／超伝導勢（Willow/IBM）の跳躍</td></tr>
@@ -226,14 +227,14 @@ a{color:var(--accent)}
   </div>
   <div class="tblwrap"><table>
     <tr><th>銘柄</th><th>テーマ</th><th class="n">数量（買うなら）</th><th>発動条件</th><th>見送り確定条件</th></tr>
-    <tr><td><b>イワキ 6237</b> <span class="num sub">¥3,945</span></td><td>液冷ポンプ（日本周辺）</td><td class="n">S株 約15株≒6万</td><td>¥3,500-3,800到達</td><td>Charon/Dalton売り抜け報告＝需給相場終了</td></tr>
+    <tr><td><b>イワキ 6237</b> <span class="num sub">¥3,945</span></td><td>液冷ポンプ（日本周辺）</td><td class="n">S株 約15株≒6万</td><td>¥3,500-3,800到達<br><span class="sub">＝急騰の23-38%フィボ retracement</span></td><td>Charon/Dalton売り抜け報告＝需給相場終了</td></tr>
     <tr><td><b>VRT</b> <span class="num sub">$300</span></td><td>液冷CDU（米本命）</td><td class="n">1株≒4.8万</td><td>$265-295＋下げ止まり（陽線・出来高減）</td><td>受注残の伸び鈍化</td></tr>
-    <tr><td><b>三菱重工 7011</b> <span class="num sub">¥3,788</span></td><td>防衛＋原子力＋ガスT（日本枠）</td><td class="n">S株 15-18株≒6万</td><td>¥3,300-3,600到達</td><td>受注残鈍化・中国規制の実害顕在化</td></tr>
+    <tr><td><b>三菱重工 7011</b> <span class="num sub">¥3,792</span></td><td>防衛＋原子力＋ガスT（日本枠）</td><td class="n">S株 15-18株≒6万</td><td><b>第1弾¥3,494-3,600</b>（実反発地点直上・確度中）<br><b>第2弾¥3,300</b>（未検証・深押し限定）</td><td>受注残鈍化・中国規制の実害顕在化</td></tr>
     <tr><td><b>MU</b> <span class="num sub">$976</span></td><td>メモリ（脱シクリカル試験中）</td><td class="n">1株≒15.7万<br><span class="sub">＝プール2.6ヶ月分</span></td><td><b>8末-9月決算でSCA下のマージン耐性確認</b>→メイン昇格</td><td>マージン急落＝SCA実効性に疑義→回転専用へ戻す</td></tr>
-    <tr><td><b>SB 9984</b> <span class="num sub">¥6,169</span></td><td>OpenAI IPOイベント（13%保有）</td><td class="n">S株≒6万（2分割）</td><td>¥5,700-6,200</td><td class="kill-line">OpenAI調達難・ダウンラウンド報道＝イベント消滅で即撤退</td></tr>
+    <tr><td><b>SB 9984</b> <span class="num sub">¥6,169</span></td><td>OpenAI IPOイベント（13%保有）</td><td class="n">S株≒6万（2分割）</td><td>¥5,700-6,200<br><span class="sub">＝現値は38%フィボ¥6,190の真上。今まさに第一支持を試している最中</span></td><td class="kill-line">OpenAI調達難・ダウンラウンド報道＝イベント消滅で即撤退</td></tr>
     <tr><td><b>SPCX</b>（保有1株） <span class="num sub">$153</span></td><td>宇宙覇権2040＋xAI</td><td class="n">最大+2株（上限3株≒7.4万）</td><td><b>マイルストーン後の押し目のみ</b>：①Flight 13成功→$140台で+1株 ②Starlink黒字幅拡大/商用定期化→+1株</td><td>7/31 Flight 13失敗・大幅延期・増資条件悪化→売却判定</td></tr>
-    <tr><td><b>信越化学 4063</b> <span class="num sub">¥6,958</span></td><td>ウェハ・EUVブランクス材料</td><td class="n">S株≒4-6万</td><td>¥6,000-6,500（-20%圏）</td><td>—（質は合格・値段待ち）</td></tr>
-    <tr><td><b>TQQQ</b></td><td>暴落の凸性</td><td class="n">各5万×3段</td><td>QQQ高値-35%／-50%／-65%</td><td>QQQ前回高値回復で全売却（欲の延長禁止）</td></tr>
+    <tr><td><b>信越化学 4063</b> <span class="num sub">¥6,958</span></td><td>ウェハ・EUVブランクス材料</td><td class="n">S株≒4-6万</td><td><b>第1弾¥6,450-6,700</b>（38%フィボ＋直近安値の合流・確度高）<br><b>第2弾¥6,000</b>（50%フィボ・深押し限定）</td><td>—（質は合格・値段待ち）</td></tr>
+    <tr><td><b>TQQQ</b></td><td>暴落の凸性</td><td class="n">各5万×3段</td><td id="tqqq-trigger-row-html">§Ⅱ-4-1参照（200週線・週足BB-2σ・複数弱気相場フィボの合流で再設計）</td><td>QQQ前回高値回復で全売却（欲の延長禁止）</td></tr>
   </table></div>
 </section>
 
@@ -255,14 +256,14 @@ a{color:var(--accent)}
     <tr><th>買い方向</th><th class="n">水準</th><th>意味</th></tr>
     <tr><td>NVDA</td><td class="n">$190</td><td>ゾーン上限到達</td></tr>
     <tr><td>CEG</td><td class="n">$245 ／ $235</td><td>回復サイン（買い）／ 割れ（触らない）</td></tr>
-    <tr><td>GOOGL</td><td class="n">$345</td><td>前倒し買い圏</td></tr>
-    <tr><td>AVGO</td><td class="n">$360</td><td>ゾーン内確認</td></tr>
+    <tr><td>GOOGL</td><td class="n">$320</td><td>200日線との合流＝前倒し買い圏</td></tr>
+    <tr><td>AVGO</td><td class="n">$350</td><td>ゾーン上限確認</td></tr>
     <tr><td>TSM</td><td class="n">$430</td><td>ゾーン内確認</td></tr>
-    <tr><td>イワキ</td><td class="n">¥3,800</td><td>押し目ゾーン入口</td></tr>
-    <tr><td>三菱重工</td><td class="n">¥3,600</td><td>押し目ゾーン入口</td></tr>
-    <tr><td>信越化学</td><td class="n">¥6,500</td><td>押し目ゾーン入口</td></tr>
-    <tr><td>SB</td><td class="n">¥6,000</td><td>分割買い水準</td></tr>
-    <tr><td>QQQ</td><td class="n">高値-35%</td><td>暴落プロトコル第1段（高値更新ごとに再計算）</td></tr>
+    <tr><td>イワキ</td><td class="n">¥3,700</td><td>23%フィボ＝押し目ゾーン入口</td></tr>
+    <tr><td>三菱重工</td><td class="n">¥3,600</td><td>唯一の実反発地点直上＝ゾーン入口</td></tr>
+    <tr><td>信越化学</td><td class="n">¥6,700</td><td>直近安値＋38%フィボ＝ゾーン入口</td></tr>
+    <tr><td>SB</td><td class="n">¥6,190</td><td>38%フィボ＝現在地。既にここにいる</td></tr>
+    <tr><td>QQQ</td><td class="n">§Ⅱ-4-1参照</td><td>200週線／週足BB-2σ／複数弱気相場フィボの合流水準（高値-35%の丸めは廃止）</td></tr>
   </table></div>
   <h3>監視ルーチン（誰が・いつ・何を）</h3>
   <div class="tblwrap"><table>
@@ -430,6 +431,44 @@ a{color:var(--accent)}
   </ol>
 </section>
 
+<section id="b4b">
+  <div class="secthead">
+    <div class="eyebrow">第Ⅱ部 ─ 4-1</div>
+    <h2>TQQQ発動ライン──「高値-35%」の丸めを廃止し実データで再設計</h2>
+    <div class="sub">7/4追記：当初の「高値-35/-50/-65%」は根拠のない丸め数字だった（ユーザー指摘）。QQQ週足データ（1999年上場以来）で200週線・週足20週ボリンジャー・現強気相場のフィボナッチを実測し、統計的な合流点へ組み替えた。</div>
+  </div>
+
+  <h3>発見1：200週線への到達は上場来たった3回しかない</h3>
+  <div class="tblwrap"><table>
+    <tr><th>発生時期</th><th>局面</th><th class="n">直近高値比</th></tr>
+    <tr><td>2003年初</td><td>dot-comボトム</td><td class="n">-38.4%</td></tr>
+    <tr><td>2008年秋</td><td>金融危機</td><td class="n">-24.3%</td></tr>
+    <tr><td>2022年秋</td><td>利上げ・インフレショック</td><td class="n">-30.7〜-34.1%</td></tr>
+  </table></div>
+  <p class="sub">200週線は「よくある調整」では触れない。史上3回とも世代に一度級の大底で発生している。現在の200週線は$460.4（現値$712.6から-35.4%）。</p>
+
+  <h3>発見2：現強気相場（2022年安値$254.9→最高値$739.8）のフィボナッチとの合流</h3>
+  <div class="tblwrap"><table>
+    <tr><th>戻し水準</th><th class="n">価格</th><th class="n">最高値比</th><th>備考</th></tr>
+    <tr><td>50%戻し</td><td class="n">$497.4</td><td class="n">-32.8%</td><td rowspan="2" style="vertical-align:middle">200週線($460)とほぼ同じ帯に密集</td></tr>
+    <tr><td>61.8%戻し</td><td class="n">$440.1</td><td class="n">-40.5%</td></tr>
+    <tr><td>78.6%戻し</td><td class="n">$358.7</td><td class="n">-51.5%</td><td>2022年安値を実質更新する深さ</td></tr>
+  </table></div>
+
+  <h3>再設計後のトリガー</h3>
+  <div class="tblwrap"><table>
+    <tr><th>段階</th><th>発動水準（高値比）</th><th>技術的根拠</th><th>希少性・確認フィルター</th></tr>
+    <tr><td><b>第1弾</b></td><td class="n">-33〜38%<br>($460-500圏)</td><td>50%フィボ＋61.8%フィボ＋<b>200週線の三重合流</b></td><td>200週線到達は史上3回のみ。いずれも世代に一度の大底</td></tr>
+    <tr><td><b>第2弾</b></td><td class="n">-51%<br>($359圏)</td><td><b>78.6%フィボ</b></td><td>2022年安値を明確に割り込む水準</td></tr>
+    <tr><td><b>第3弾</b></td><td class="n">-65%超</td><td class="kill-line">フィボの外側。技術的合流点なし</td><td>2000-02年の週足BB-2σ反復到達(-64.6〜-69.7%)を歴史的アナロジーとして採用のみ。正当化のない純粋な宝くじ層と自覚する</td></tr>
+  </table></div>
+
+  <div class="rule"><b>ボリンジャーバンドの正しい使い方（固定価格ではなく確認フィルター）</b>
+    週足20週BB-2σは単独では使えない：軽い-8%の調整でも深刻な-70%の暴落でも同様に触れるため、固定の価格目標にはならない（バンド自体が変動するため）。<b>各段階の価格到達時に、同時に週足BB-2σを下回っているかを確認してから執行する</b>——価格到達だけでなく統計的な行き過ぎの確証を加える運用にする。
+  </div>
+  <p class="sub">再計算タイミング：四半期点検（2月・8月）または新高値更新時に、強気相場の起点安値とATHを更新してフィボ水準を引き直す。</p>
+</section>
+
 <section id="b5">
   <div class="secthead">
     <div class="eyebrow">第Ⅱ部 ─ 5</div>
@@ -472,7 +511,7 @@ a{color:var(--accent)}
     <tr><td>AMD</td><td>OpenAI 6GW＋Meta 6GWで第2勢力の実体はあるがfwd39は物語込みの値段で、アンカー顧客が最脆弱ノード（OpenAI）。回転のみ</td></tr>
     <tr><td>信仰銘柄（OKI・ミライニ546A・IMV）</td><td>OKI＝減収の低収益老舗（OPM4.7%）の政策テーマ再評価済み。ミライニ＝半導体商社のパススルー。IMV＝接続の弱い400億。データの裏付けなし</td></tr>
     <tr><td>水処理・上流コモディティ（銅・電線等）</td><td>スマイルカーブ：利益は設計・独占製造・契約電力に集中。上流はテーマ純度不足。例外候補（信越・CCJ・栗田）のみ監視</td></tr>
-    <tr><td>信越化学のメイン編入</td><td>質は本物（ウェハ首位・EUVブランクス独占・ネットキャッシュ）だがfwd21.1で成長+1.3%＝<b>TSMと同じ値段で成長1/30</b>。¥6,000-6,500の押し目監視のみ</td></tr>
+    <tr><td>信越化学のメイン編入</td><td>質は本物（ウェハ首位・EUVブランクス独占・ネットキャッシュ）だがfwd21.1で成長+1.3%＝<b>TSMと同じ値段で成長1/30</b>。¥6,450-6,700／¥6,000の2段押し目監視のみ</td></tr>
     <tr><td>モメンタム投信（SMT系）・FANG+・Top10・Zテック20等</td><td>ローテ枠の自前実装で代替（コスト安・制御可能）。コア候補としては§Ⅱ-2で却下済み</td></tr>
   </table></div>
 </section>
